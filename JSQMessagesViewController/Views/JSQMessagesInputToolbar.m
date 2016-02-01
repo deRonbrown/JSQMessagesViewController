@@ -43,9 +43,24 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
 
 #pragma mark - Initialization
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self == [super initWithFrame:frame])
+    {
+        [self jsq_setup];
+    }
+
+    return self;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self jsq_setup];
+}
+
+- (void)jsq_setup
+{
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     self.jsq_isObserving = NO;
